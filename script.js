@@ -49,8 +49,8 @@ bucketColorBtn.addEventListener('change', () => {
 
 // Eraser
 eraser.addEventListener('click', () => {
-	isEraser = true;
-	currentColor = `#${bucketColor}`;
+  isEraser = true;
+  currentColor = bucketColor;
 	currentSize = 50;
 	brushIcon.style.color = 'white';
 	eraser.style.color = 'black';
