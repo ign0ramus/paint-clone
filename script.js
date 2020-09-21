@@ -49,8 +49,8 @@ bucketColorBtn.addEventListener('change', () => {
 
 // Eraser
 eraser.addEventListener('click', () => {
-  isEraser = true;
-  currentColor = bucketColor;
+	isEraser = true;
+	currentColor = bucketColor;
 	currentSize = 50;
 	brushIcon.style.color = 'white';
 	eraser.style.color = 'black';
@@ -95,7 +95,7 @@ function restoreCanvas() {
 		context.moveTo(drawnArray[i - 1].x, drawnArray[i - 1].y);
 		context.lineWidth = drawnArray[i].size;
 		context.lineCap = 'round';
-		if (drawnArray[i].eraser) {
+		if (drawnArray[i].erase) {
 			context.strokeStyle = bucketColor;
 		} else {
 			context.strokeStyle = drawnArray[i].color;
@@ -142,7 +142,7 @@ canvas.addEventListener('mousemove', (event) => {
 	if (isMouseDown) {
 		const currentPosition = getMousePosition(event);
 		context.lineTo(currentPosition.x, currentPosition.y);
-		context.stroke();
+    context.stroke();
 		storeDrawn(
 			currentPosition.x,
 			currentPosition.y,
@@ -184,19 +184,19 @@ loadStorageBtn.addEventListener('click', () => {
 
 // Clear Local Storage
 clearStorageBtn.addEventListener('click', () => {
-  localStorage.removeItem('savedCanvas');
-  // Active Tool
-  activeToolEl.textContent = 'Local Storage Cleared';
-  setTimeout(switchToBrush, 1500);
+	localStorage.removeItem('savedCanvas');
+	// Active Tool
+	activeToolEl.textContent = 'Local Storage Cleared';
+	setTimeout(switchToBrush, 1500);
 });
 
 // Download Image
 downloadBtn.addEventListener('click', () => {
-  downloadBtn.href = canvas.toDataURL('image/jpeg', 1);
-  downloadBtn.download = 'paint-clone-image.jpeg';
-  // Active Tool
-  activeToolEl.textContent = 'Image File Saved';
-  setTimeout(switchToBrush, 1500);
+	downloadBtn.href = canvas.toDataURL('image/jpeg', 1);
+	downloadBtn.download = 'paint-clone-image.jpeg';
+	// Active Tool
+	activeToolEl.textContent = 'Image File Saved';
+	setTimeout(switchToBrush, 1500);
 });
 
 // // Event Listener
